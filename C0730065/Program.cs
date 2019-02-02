@@ -9,82 +9,66 @@ namespace C0730065
     class Program
     {
         static void Main(string[] args)
-
         {
-            countryside c =  new countryside();
+            Countryside c = new Countryside();
             c.run();
-            c.travel();
+            c.Travel();
+            //new Test().forTest();             // Anonymous Object Reference
             Console.ReadLine();
-            
-           
         }
     }
-    class LearningExperiment
+
+    class Village
     {
+        public bool isAstrilde = false;
+        public Village nextVillage;
+        public Village prevVillage;
+        public string villageName;
+    }
+
+    class Countryside
+    {
+        Village Toronto, Ajax, Maple;
+
+        public Village CurrentVillage { get; private set; }
+
         public void run()
         {
-            village Toronto;
-            Toronto = new village();
-            village a, b, c;
-            Toronto.villagename = "version A";
-            a = Toronto;
-            Console.WriteLine(a.villagename);
-            Toronto = new village();
-            Toronto.villagename = "version B";
-            b = Toronto;
-            Console.WriteLine(a.villagename);
-            Toronto = new village();
-            Toronto.villagename = "version C";
-            c = Toronto;
-            Console.WriteLine(a.villagename);
-        }
-    }
-        class village
-        {
-            public bool isAstrilde;
-            public village nextvillage;
-            public village prevvillage;
-            public String villagename;
+            Maple = new Village();
+            Maple.villageName = "Maple";
+            Toronto = new Village();
+            Toronto.villageName = "Toronto";
+            Ajax = new Village();
+            Ajax.isAstrilde = true;
+            Ajax.villageName = "Ajax";
+
+            Maple.nextVillage = Toronto;
+            Toronto.nextVillage = Ajax;
+            Ajax.nextVillage = null;
         }
 
-
-
-        class countryside
+        public void Travel()
         {
-            village Mapple;
-            village Toronto;
-            village ajax;
-
-            public void run()
+            CurrentVillage = Toronto;
+            while (true)
             {
-                Mapple = new village();
-                Toronto = new village();
-                ajax = new village();
-                ajax.isAstrilde = true;
-                Mapple.villagename = "Mapple";
-                Mapple.nextvillage = Toronto;
-            Toronto.nextvillage = ajax;
-            Toronto.villagename = "Toronto";
-            ajax.nextvillage = null;
-            }
-            public void travel()
-            {
-                village currentvillage = Mapple;
+                if (CurrentVillage.isAstrilde)
+                { 
+            Console.WriteLine("Astrilde is in : " + CurrentVillage.villageName);
+            Console.ReadLine();
 
-            while (currentvillage.nextvillage != null) { 
-
-            Console.WriteLine("I am in " + currentvillage.villagename);
-                
-
-                    if (currentvillage.isAstrilde)
-                        Console.WriteLine("you found astrilde in " + currentvillage);
-                    else
-                        currentvillage = currentvillage.nextvillage;
-                }
-
-            }
+        }
+            
+                else
+                    CurrentVillage = CurrentVillage.nextVillage;
         }
     }
 
 
-    
+}
+}
+
+
+
+
+
