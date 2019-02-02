@@ -13,6 +13,8 @@ namespace C0730065
         {
             countryside c =  new countryside();
             c.run();
+            c.travel();
+            Console.ReadLine();
             
            
         }
@@ -59,14 +61,21 @@ namespace C0730065
                 Toronto = new village();
                 ajax = new village();
                 ajax.isAstrilde = true;
-                Mapple.villagename = "Toronto";
+                Mapple.villagename = "Mapple";
                 Mapple.nextvillage = Toronto;
+            Toronto.nextvillage = ajax;
+            Toronto.villagename = "Toronto";
+            ajax.nextvillage = null;
             }
             public void travel()
             {
-                village currentvillage = Toronto;
-                while (!currentvillage.isAstrilde)
-                {
+                village currentvillage = Mapple;
+
+            while (currentvillage.nextvillage != null) { 
+
+            Console.WriteLine("I am in " + currentvillage.villagename);
+                
+
                     if (currentvillage.isAstrilde)
                         Console.WriteLine("you found astrilde in " + currentvillage);
                     else
