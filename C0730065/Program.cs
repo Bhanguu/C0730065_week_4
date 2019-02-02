@@ -32,6 +32,8 @@ namespace C0730065
             public void run()
             {
                 Mapple = new village();
+                Toronto = new village();
+                ajax = new village();
                 Mapple.villagename = "Toronto";
                 Mapple.nextvillage = Toronto;
             }
