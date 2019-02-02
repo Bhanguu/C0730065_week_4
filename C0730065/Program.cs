@@ -11,8 +11,29 @@ namespace C0730065
         static void Main(string[] args)
 
         {
-            countryside c = new countryside();
-        }
+            //countryside c = new countryside();
+            //c.run();
+            (new LearningExperiment()).run();
+    }
+}
+        class LearningExperiment
+       {
+            public void run() { 
+            village Toronto;
+            Toronto = new village();
+            village a, b, c;
+            Toronto.villagename ="version A";
+            a = Toronto;
+            Console.WriteLine(a.villagename);
+           Toronto = new village();
+          Toronto.villagename ="version B";
+           b =Toronto;
+          Console.WriteLine(a.villagename);
+         Toronto = new village();
+         Toronto.villagename ="version C";
+           c= Toronto;
+        Console.WriteLine(a.villagename);
+    }
         class village
         {
            public bool isAstrildeHere;
